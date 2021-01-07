@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Additional HTML/Before BODY is closed</title>
+</head>
+<body>
+
+    
+<!-- copy body contents to field Additional HTML/Before BODY is closed (additionalhtmlfooter) -->
+
+<!-- Pure JavaScript implementation -->
+<script type="text/javascript">
+    /*
+        scroll to current block in any course
+    */
+    (function() {
+        var currentBlock = document.querySelectorAll("li.current")[0];
+        if (currentBlock != null) {
+            currentBlock.scrollIntoView();
+        }
+    })();
+    
+    /*
+        Add access key  
+        edit on/off:  IExplore ALT+E; Firefox ALT+SHIFT+E
+        Login/Logout: IExplore ALT+L; Firefox ALT+SHIFT+L,...
+    */
+    (function() {
+        var editLink = document.querySelectorAll('input[name="edit"]')[0];
+        if (editLink != null) {
+            editLink = editLink.nextElementSibling;
+            if (editLink != null) {
+                editLink.setAttribute("accessKey", "E");
+            }
+        }
+        var loginLink = document.querySelectorAll('a[href*="/login/index.php"]')[0];
+        if (loginLink != null) {
+            loginLink.setAttribute("accessKey", "L");
+        }
+        var logoutLink = document.querySelectorAll('a[href*="/login/logout.php"]')[0];
+        if (logoutLink != null) {
+                logoutLink.setAttribute("accessKey", "L");
+        }
+    })();
+</script>
+
+<!-- legacy YUI Code -->
+<script type="text/javascript">
+    YUI().use('node', function (Y) {
+          if (Y.one("#page-site-index")) {
+            /*
+                Collapses all but the first n top course categories on the front page
+            */
+            Y.all('.course_category_tree>.content>.subcategories>.category').each(function (catNode,index) {
+                if (index > 1) {
+                if (catNode.hasClass('with_children'))  { // ensure correct div...
+                    if (!catNode.hasClass('collapsed')) { // not already collapsed...
+                    catNode.addClass('collapsed');
+                    }
+                }
+                }
+            });
+        }
+        else if (Y.one("#page-login-index")) {
+            if (window.location.hash.length > 0) {
+                Y.one('#username').set('value',decodeURIComponent(window.location.hash.substr(1)));
+                Y.one('#password').getDOMNode().focus();
+            }
+            else {
+                // select() and focus() are plain js function, hence not chainable.
+                Y.one('#username').getDOMNode().focus();
+                Y.one('#username').getDOMNode().select();
+            }
+        }
+        else if (Y.one("#page-course-view-topics")) {
+            /*
+                scroll to current topic
+            */
+            if (window.location.hash == '') {
+                var firstCurrentTopics = Y.one('.current');
+                if (firstCurrentTopics) { // might be null
+                    window.location.hash = '#'+firstCurrentTopics.get('id');
+                }
+            }
+        }
+        else if (Y.one("#page-mod-assign-mod")) {
+            /*
+                sync cutoff date
+            */
+            var chkbx = Y.one("#id_cutoffdate_enabled");
+            chkbx.on("change", function (e) {
+                if (e.target.get("checked")) {
+                    // alert("checked");
+                    Y.one('#id_cutoffdate_day').set('selectedIndex',Y.one('#id_duedate_day').get('selectedIndex'));
+                    Y.one('#id_cutoffdate_month').set('selectedIndex',Y.one('#id_duedate_month').get('selectedIndex'));
+                    Y.one('#id_cutoffdate_year').set('selectedIndex',Y.one('#id_duedate_year').get('selectedIndex'));
+                    Y.one('#id_cutoffdate_hour').set('selectedIndex',Y.one('#id_duedate_hour').get('selectedIndex'));
+                    Y.one('#id_cutoffdate_minute').set('selectedIndex',Y.one('#id_duedate_minute').get('selectedIndex'));
+                }
+            });
+        }
+    
+    });
+</script>
+    
+    
+</body>
+</html>

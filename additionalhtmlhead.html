@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Additional HTML/Within HEAD</title>
+</head>
+<body>
+
+    
+<!-- copy body contents to field Additional HTML/Within HEAD (additionalhtmlhead) -->
+
+<style media="screen">
+    /* boost UI tweaks */
+    #intro li {
+        margin-bottom: 0.2rem;
+    }
+
+    li.current {
+        background-color: #ffffe0;
+    }
+    .site-name {
+        display: none !important;
+    }
+    .navbar-brand.has-logo {
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+        margin-top: -8px !important;
+        margin-bottom: -8px !important;
+    }
+
+    .logo img {
+        max-height: 51px !important;
+    }
+
+    /* frontpage logo tweaks*/
+    #page-site-index .logo img {
+        max-height: 100px !important;
+    }
+    #page-site-index .logo {
+        margin: 0px !important;
+    }
+    #page-site-index #page-header .card {
+        border: none !important;
+    }
+    #page-site-index #page-header .card-body {
+        padding: 0px !important;
+    }
+
+    /*
+        These declarations avoid masses of teachers displayed in course overviews
+        Only the first 3 teachers are displayed;
+        If there are more teachers in the course ellipsis are displayed
+    */
+    ul.teachers li:nth-of-type(1n+5) {
+        display: none;
+    }
+    ul.teachers li:nth-of-type(4)::after {
+        content: "...";
+    }
+    ul.teachers li:nth-of-type(4) a {
+        display: none;
+    }
+
+    /* styling of code/pre elements */
+    code {
+        background-color: #F7F7F9;
+        border: 1px solid #E1E1E8;
+        padding: 3px 4px;
+    }
+    code, pre {
+        border-radius: 3px 3px 3px 3px;
+        color: #444444;
+        font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+        padding: 0 3px 2px;
+    }
+
+    /* taken from Wikipedia CSS */
+    kbd {
+        background: #F7F7F7;
+        background-image:linear-gradient(rgba(255,255,255,.4),rgba(127,127,127,.2));
+        border-color:#DDDDDD #AAAAAA #888888 #CCCCCC;
+        border-radius:2px;
+        border-style:solid;
+        border-width:1px;
+        padding:0 .4em;
+        text-shadow:0 1px rgba(255,255,255,.5);
+        white-space:nowrap;
+        font-family:inherit;
+    }
+</style>
+
+
+
+
+</body>
+</html>
