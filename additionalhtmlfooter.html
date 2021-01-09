@@ -17,9 +17,11 @@
         scroll to current block in any course
     */
     (function() {
-        var currentBlock = document.querySelectorAll("li.current")[0];
-        if (currentBlock != null) {
-            currentBlock.scrollIntoView();
+        if (window.location.hash.length < 1) { // no fragment
+            var currentBlock = document.querySelectorAll("li.current")[0];
+            if (currentBlock != null) {
+                currentBlock.scrollIntoView();
+            }
         }
     })();
     
