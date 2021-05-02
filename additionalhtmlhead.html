@@ -13,6 +13,34 @@
 
 <style media="screen">
     /* boost UI tweaks */
+
+    /* tweaks for Grading  */
+    div.submissionstatus {
+        background-color: tomato !important;
+        color: white !important;
+        font-weight: bold;
+        padding-left: 0.5em;
+    }
+
+    /* tweaks for Activity/Assignment (and probably others)  */
+    div.fileuploadsubmissiontime::before {
+        content: "\00a0\00a0(";
+    }
+    div.fileuploadsubmissiontime::after {
+        content: ")";
+    }
+
+    /* tweaks for Activity/Quiz */
+    div.rightanswer p:first-of-type {
+        margin-top: 0.5em;
+    }    
+    .rightanswer p {
+        list-style:disc outside none;
+        display:list-item; 
+       margin-left: 1em;
+    }
+
+    /* tweaks for Resource/Page */
     #intro li {
         margin-bottom: 0.2rem;
     }
