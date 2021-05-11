@@ -14,6 +14,27 @@
 <!-- Pure JavaScript implementation -->
 <script type="text/javascript">
     /*
+        sensible duedate/cutoff values (23:59)
+    */
+    (function() {
+        var duedate_hour = document.getElementById('id_duedate_hour');
+        var duedate_minute = document.getElementById('id_duedate_minute');
+        if (duedate_hour != null) {
+            if ((duedate_hour.selectedIndex == 0) && (duedate_minute.selectedIndex == 0)) {
+                duedate_hour.value=23;
+                duedate_minute.value=59;
+            }
+        }
+        var cutoffdate_hour = document.getElementById('id_cutoffdate_hour');
+        var cutoffdate_minute = document.getElementById('id_cutoffdate_minute');
+        if (cutoffdate_hour != null) {
+            if ((cutoffdate_hour.selectedIndex == 0) && (cutoffdate_minute.selectedIndex == 0)) {
+                cutoffdate_hour.value=23;
+                cutoffdate_minute.value=59;
+            }
+        }
+    })();
+    /*
         reduce number of logon fails by auto-removing '@brg4.at' from username
     */
     (function() {
